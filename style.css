@@ -1,0 +1,93 @@
+html{
+    font-size: 10px;
+    background-image: url("soundBoard.jpeg");
+    font-family: News Gothic MT;
+
+}
+body{
+    margin: 0;
+    padding: 0;
+    font-family: News Gothic MT;
+}
+
+header{
+    text-align: center;
+    color: Goldenrod;
+    margin: 0px;
+    padding: 0px;
+    line-height: 8px;
+    font-family: News Gothic MT;
+    font-size: 15px;
+}
+
+header h1{
+    text-transform: uppercase;
+    padding:0;
+    margin:0;
+    margin-top: 175px;
+    margin-bottom: 40px;
+    font-family: Avenir Next;
+    font-size: 50px;
+}
+
+a {
+    text-decoration: none;
+    color: beige;
+    margin-top:20px;
+    font-size: 15px;
+}
+
+footer{
+    color: beige;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 12px;
+}
+
+.keys {
+  display: flex;
+  flex: 1;
+  min-height: 100vh;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.key{
+  border: .4rem solid black;
+  border-radius: .5rem;
+  margin: 1rem;
+  font-size: 1.5rem;
+  padding: 1rem .5rem;
+  transition: all .07s ease;
+  width: 10rem;
+  text-align: center;
+  color: white;
+  background: rgba(0,0,0,0.4);
+  text-shadow: 0 0 .5rem black;
+}
+
+
+/*---- IN EFFECT WHEN PLAYSOUND() FUNCTION IS CALLED ---- */
+.playing{
+    transform: scale(1.2);
+    border-color: #ffc600;
+    box-shadow: 0 0 1rem #ffc600;
+} 
+
+kbd{
+    display: block;
+    font-size: 4rem;
+    font-family: News Gothic MT;
+
+}
+
+.sound{
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    letter-spacing: .1rem;
+    color: #ffc600;
+}
+
+
+

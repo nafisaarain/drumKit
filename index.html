@@ -1,0 +1,115 @@
+<!-- Nafisa Arain 
+---- December 10, 2017
+---- JavaScript30 
+---- 30 Day Vanilla JS Coding Challenge by Wes Bos
+---- Javascript30.com -->
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Fis's Drum Kit</title>
+        <link rel="stylesheet", type="text/css", href="style.css">
+
+    </head>
+    
+    <body>
+        <!-- ----------HEADER ---------- -->
+        <header>
+            <h1>Fis's Drum Kit</h1>
+            <h2>JavaScript30 Challenge</h2>
+            <h3>Day 1</h3>
+            <a href="http://javascript30.com", target="_blank">30 Day Vanilla JS Coding Challenge by Wes Bos</a>
+
+        </header>
+        
+        <!-- ----------MAIN PAGE SECTION---------- -->
+        <div class="keys">
+            <div data-key="65" class="key">
+                <kbd>A</kbd>
+                <span class="sound">clap</span>
+            </div>
+            <div data-key="83" class="key">
+                <kbd>S</kbd>
+                <span class="sound">hiHat</span>
+            </div>
+            <div data-key="68" class="key">
+                <kbd>D</kbd>
+                <span class="sound">kick</span>
+            </div>
+            <div data-key="70" class="key">
+                <kbd>F</kbd>
+                <span class="sound">clave</span>
+            </div>
+            <div data-key="71" class="key">
+                <kbd>G</kbd>
+                <span class="sound">boom</span>
+            </div>
+            <div data-key="72" class="key">
+                <kbd>H</kbd>
+                <span class="sound">ride</span>
+            </div>
+            <div data-key="74" class="key">
+                <kbd>J</kbd>
+                <span class="sound">snare</span>
+            </div>
+            <div data-key="75" class="key">
+                <kbd>K</kbd>
+                <span class="sound">tom</span>
+            </div>
+            <div data-key="76" class="key">
+                <kbd>L</kbd>
+                <span class="sound">cow bell</span>
+            </div>
+        </div>
+        
+        
+        <!-- ----------FOOTER---------- -->
+        <footer>
+            <p>&copy; Copyright Nafisa Arain | Dec. 2017</p>
+        </footer>
+        
+        
+        <!-- ----------- AUDIO CLIPS ---------- -->
+        <audio data-key="65" src="sounds/clap.mp3"></audio> 
+        <audio data-key="83" src="sounds/hihat.wav"></audio>
+        <audio data-key="68" src="sounds/kick.wav"></audio>
+        <audio data-key="70" src="sounds/clave.mp3"></audio>
+        <audio data-key="71" src="sounds/boomKick.mp3"></audio> 
+        <audio data-key="72" src="sounds/ride.wav"></audio>
+        <audio data-key="74" src="sounds/snare.wav"></audio>
+        <audio data-key="75" src="sounds/tom.wav"></audio>
+        <audio data-key="76" src="sounds/cowBell.mp3"></audio>
+        
+        
+        <!-- ---------JAVASCRIPT----------- -->
+        <script>            
+            function playSound(e){
+                //console.log(e.keyCode);
+                const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+                const key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
+                if(!audio) return; //if no associated audio clip, stop the function from running altogether
+                
+                key.classList.add('playing'); //to sync the transition of the large size and border yellow
+                audio.currentTime = 0;
+                audio.play();
+            }
+            
+            function removeTransition (e){
+                //console.log(e);
+                if(e.propertyName !== 'transform') return; //skip it if it's not a transform
+                //'this' is the key since we called the add event listener function on the key
+                this.classList.remove('playing');   
+            }
+            
+            const keys = document.querySelectorAll('.key');
+            //each key gets an event listener added to it, when the transition end event occurs, apply removeTransition function
+            keys.forEach(key => key.addEventListener('transitionend', removeTransition));
+            
+            window.addEventListener('keydown', playSound);
+        </script>
+        
+        
+    </body>
+    
+</html>
